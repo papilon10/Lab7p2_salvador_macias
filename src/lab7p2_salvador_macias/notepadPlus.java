@@ -34,6 +34,9 @@ public class notepadPlus extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_archivo = new javax.swing.JMenu();
+        boton_nuevo = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        boton_salir = new javax.swing.JMenuItem();
         menu_formato = new javax.swing.JMenu();
         Ayuda = new javax.swing.JMenu();
 
@@ -71,6 +74,34 @@ public class notepadPlus extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jList1);
 
         menu_archivo.setText("Archivo");
+
+        boton_nuevo.setText("nuevo");
+        boton_nuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_nuevoMouseClicked(evt);
+            }
+        });
+        boton_nuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_nuevoActionPerformed(evt);
+            }
+        });
+        menu_archivo.add(boton_nuevo);
+        menu_archivo.add(jSeparator1);
+
+        boton_salir.setText("salir");
+        boton_salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_salirMouseClicked(evt);
+            }
+        });
+        boton_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_salirActionPerformed(evt);
+            }
+        });
+        menu_archivo.add(boton_salir);
+
         jMenuBar1.add(menu_archivo);
 
         menu_formato.setText("Formato");
@@ -116,6 +147,31 @@ public class notepadPlus extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_AyudaMouseClicked
 
+    private void boton_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nuevoActionPerformed
+        System.out.println("pepe");
+        jTextArea1.setText("");
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_nuevoActionPerformed
+
+    private void boton_nuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_nuevoMouseClicked
+        System.out.println("pepe");
+        jTextArea1.setText("");
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_nuevoMouseClicked
+
+    private void boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_salirActionPerformed
+        this.setVisible(false);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_salirActionPerformed
+
+    private void boton_salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_salirMouseClicked
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_salirMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -153,12 +209,15 @@ public class notepadPlus extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Ayuda;
+    private javax.swing.JMenuItem boton_nuevo;
+    private javax.swing.JMenuItem boton_salir;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JMenu menu_archivo;
     private javax.swing.JMenu menu_formato;
