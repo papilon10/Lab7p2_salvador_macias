@@ -7,6 +7,8 @@ package lab7p2_salvador_macias;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
@@ -21,6 +23,8 @@ public class notepadPlus extends javax.swing.JFrame {
      */
     public notepadPlus() {
         initComponents();
+        DefaultListModel modelo = new DefaultListModel();
+        jList1.setModel(modelo);
     }
 
     /**
@@ -246,6 +250,11 @@ public class notepadPlus extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jList1);
 
         menu_archivo.setText("Archivo");
@@ -370,8 +379,13 @@ public class notepadPlus extends javax.swing.JFrame {
 
     private void boton_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nuevoActionPerformed
         // System.out.println("pepe");
+        
+        nota nueva = new nota(jTextArea1.getText());
+        lista.add(nueva);
+        lista.add(new nota(jTextArea1.getText()));
+        DefaultListModel modeloLista = (DefaultListModel) jList1.getModel();
+        modeloLista.addElement(lista.getFirst());
         jTextArea1.setText("");
-
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_nuevoActionPerformed
 
@@ -487,8 +501,7 @@ public class notepadPlus extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_colorTxt1ActionPerformed
 
     private void btn_actualizarFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarFuenteActionPerformed
-        String[] fuentes
-                = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+
         String nombreFuente = txt_font.getText();
         Font fuenteVieja = jTextArea1.getFont();
         Font nuevaFuente = new Font(nombreFuente, fuenteVieja.getStyle(), fuenteVieja.getSize());
@@ -496,6 +509,19 @@ public class notepadPlus extends javax.swing.JFrame {
         dialog_fuente.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_actualizarFuenteActionPerformed
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        int pos = jList1.getSelectedIndex();
+        DefaultListModel modeloLista = (DefaultListModel) jList1.getModel();
+        Object objetoSeleccionado = modeloLista.getElementAt(pos);
+        if (objetoSeleccionado instanceof nota) {
+            System.out.println("aa");
+            jTextArea1.setText(((nota) objetoSeleccionado).getTxt());
+            System.out.println(((nota) objetoSeleccionado).getTxt());
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jList1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -532,7 +558,8 @@ public class notepadPlus extends javax.swing.JFrame {
         });
     }
 
-
+    String[] fuentes
+            = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Ayuda;
     private javax.swing.JMenuItem boton_nuevo;
@@ -568,4 +595,5 @@ public class notepadPlus extends javax.swing.JFrame {
     private javax.swing.JTextField txt_font;
     private javax.swing.JTextField txt_size;
     // End of variables declaration//GEN-END:variables
+public static ArrayList<nota> lista = new ArrayList();
 }
