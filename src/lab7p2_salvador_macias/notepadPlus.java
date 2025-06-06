@@ -35,6 +35,9 @@ public class notepadPlus extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txt_size = new javax.swing.JTextField();
         btn_actualizar = new javax.swing.JButton();
+        dialog_estilo = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
+        jcb_estilo = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -104,6 +107,36 @@ public class notepadPlus extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addComponent(btn_actualizar)
                 .addContainerGap(69, Short.MAX_VALUE))
+        );
+
+        jLabel3.setText("Estilo");
+
+        jcb_estilo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plano", "Negrita", "Italica" }));
+        jcb_estilo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcb_estiloActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_estiloLayout = new javax.swing.GroupLayout(dialog_estilo.getContentPane());
+        dialog_estilo.getContentPane().setLayout(dialog_estiloLayout);
+        dialog_estiloLayout.setHorizontalGroup(
+            dialog_estiloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_estiloLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel3)
+                .addGap(47, 47, 47)
+                .addComponent(jcb_estilo, 0, 199, Short.MAX_VALUE)
+                .addGap(75, 75, 75))
+        );
+        dialog_estiloLayout.setVerticalGroup(
+            dialog_estiloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_estiloLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(dialog_estiloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jcb_estilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -270,6 +303,9 @@ public class notepadPlus extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_fuenteActionPerformed
 
     private void menu_estiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_estiloActionPerformed
+
+        dialog_estilo.setVisible(true);
+        dialog_estilo.pack();
         // TODO add your handling code here:
     }//GEN-LAST:event_menu_estiloActionPerformed
 
@@ -318,8 +354,18 @@ public class notepadPlus extends javax.swing.JFrame {
         Font fuenteVieja = txt_size.getFont();
         Font nuevaFuente = new Font(fuenteVieja.getFontName(), fuenteVieja.getStyle(), size);
         jTextArea1.setFont(nuevaFuente);
+        dialog_size.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_actualizarActionPerformed
+
+    private void jcb_estiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_estiloActionPerformed
+   ;
+        int estilo = jcb_estilo.getSelectedIndex();
+        Font fuenteVieja = jTextArea1.getFont();
+        Font nuevaFuente = new Font(fuenteVieja.getFontName(), estilo, fuenteVieja.getSize());
+        jTextArea1.setFont(nuevaFuente);
+        dialog_estilo.show(false);
+    }//GEN-LAST:event_jcb_estiloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,16 +407,19 @@ public class notepadPlus extends javax.swing.JFrame {
     private javax.swing.JMenuItem boton_nuevo;
     private javax.swing.JMenuItem boton_salir;
     private javax.swing.JButton btn_actualizar;
+    private javax.swing.JDialog dialog_estilo;
     private javax.swing.JDialog dialog_size;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JComboBox<String> jcb_estilo;
     private javax.swing.JMenu menu_archivo;
     private javax.swing.JMenuItem menu_colorFondo;
     private javax.swing.JMenuItem menu_colorTexto;
