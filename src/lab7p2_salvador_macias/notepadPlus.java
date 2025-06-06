@@ -6,6 +6,7 @@ package lab7p2_salvador_macias;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
@@ -44,6 +45,10 @@ public class notepadPlus extends javax.swing.JFrame {
         btn_colorTxt = new javax.swing.JButton();
         dialog_ColorFondo = new javax.swing.JDialog();
         btn_colorTxt1 = new javax.swing.JButton();
+        dialog_fuente = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
+        txt_font = new javax.swing.JTextField();
+        btn_actualizarFuente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -191,6 +196,43 @@ public class notepadPlus extends javax.swing.JFrame {
                 .addGap(135, 135, 135)
                 .addComponent(btn_colorTxt1)
                 .addContainerGap(142, Short.MAX_VALUE))
+        );
+
+        jLabel4.setText("Ingrese la fuente");
+
+        btn_actualizarFuente.setText("actualizar");
+        btn_actualizarFuente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarFuenteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_fuenteLayout = new javax.swing.GroupLayout(dialog_fuente.getContentPane());
+        dialog_fuente.getContentPane().setLayout(dialog_fuenteLayout);
+        dialog_fuenteLayout.setHorizontalGroup(
+            dialog_fuenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_fuenteLayout.createSequentialGroup()
+                .addGroup(dialog_fuenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialog_fuenteLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel4)
+                        .addGap(32, 32, 32)
+                        .addComponent(txt_font, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialog_fuenteLayout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(btn_actualizarFuente)))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        dialog_fuenteLayout.setVerticalGroup(
+            dialog_fuenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_fuenteLayout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addGroup(dialog_fuenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txt_font, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(btn_actualizarFuente)
+                .addGap(64, 64, 64))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -353,11 +395,13 @@ public class notepadPlus extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_salirMouseClicked
 
     private void menu_fuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_fuenteActionPerformed
+        dialog_fuente.setVisible(true);
+        dialog_fuente.pack();
         // TODO add your handling code here:
     }//GEN-LAST:event_menu_fuenteActionPerformed
 
     private void menu_estiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_estiloActionPerformed
-        
+
         dialog_estilo.setVisible(true);
         dialog_estilo.pack();
         // TODO add your handling code here:
@@ -407,7 +451,7 @@ public class notepadPlus extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_tamanoMouseClicked
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        
+
         int size = Integer.parseInt(txt_size.getText());
         Font fuenteVieja = txt_size.getFont();
         Font nuevaFuente = new Font(fuenteVieja.getFontName(), fuenteVieja.getStyle(), size);
@@ -417,7 +461,7 @@ public class notepadPlus extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void jcb_estiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_estiloActionPerformed
-        
+
         int estilo = jcb_estilo.getSelectedIndex();
         Font fuenteVieja = jTextArea1.getFont();
         Font nuevaFuente = new Font(fuenteVieja.getFontName(), estilo, fuenteVieja.getSize());
@@ -441,6 +485,17 @@ public class notepadPlus extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_colorTxt1ActionPerformed
+
+    private void btn_actualizarFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarFuenteActionPerformed
+        String[] fuentes
+                = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+        String nombreFuente = txt_font.getText();
+        Font fuenteVieja = jTextArea1.getFont();
+        Font nuevaFuente = new Font(nombreFuente, fuenteVieja.getStyle(), fuenteVieja.getSize());
+        jTextArea1.setFont(nuevaFuente);
+        dialog_fuente.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_actualizarFuenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,21 +532,25 @@ public class notepadPlus extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Ayuda;
     private javax.swing.JMenuItem boton_nuevo;
     private javax.swing.JMenuItem boton_salir;
     private javax.swing.JButton btn_actualizar;
+    private javax.swing.JButton btn_actualizarFuente;
     private javax.swing.JButton btn_colorTxt;
     private javax.swing.JButton btn_colorTxt1;
     private javax.swing.JDialog dialog_ColorFondo;
     private javax.swing.JDialog dialog_colorTxt;
     private javax.swing.JDialog dialog_estilo;
+    private javax.swing.JDialog dialog_fuente;
     private javax.swing.JDialog dialog_size;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -506,6 +565,7 @@ public class notepadPlus extends javax.swing.JFrame {
     private javax.swing.JMenu menu_formato;
     private javax.swing.JMenuItem menu_fuente;
     private javax.swing.JMenuItem menu_tamano;
+    private javax.swing.JTextField txt_font;
     private javax.swing.JTextField txt_size;
     // End of variables declaration//GEN-END:variables
 }
