@@ -4,6 +4,9 @@
  */
 package lab7p2_salvador_macias;
 
+import java.awt.Font;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Apple
@@ -28,6 +31,10 @@ public class notepadPlus extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
+        dialog_size = new javax.swing.JDialog();
+        jLabel2 = new javax.swing.JLabel();
+        txt_size = new javax.swing.JTextField();
+        btn_actualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -63,6 +70,40 @@ public class notepadPlus extends javax.swing.JFrame {
                 .addGap(114, 114, 114)
                 .addComponent(jLabel1)
                 .addContainerGap(138, Short.MAX_VALUE))
+        );
+
+        jLabel2.setText("Ingrese el tamano");
+
+        btn_actualizar.setText("actualizar");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_sizeLayout = new javax.swing.GroupLayout(dialog_size.getContentPane());
+        dialog_size.getContentPane().setLayout(dialog_sizeLayout);
+        dialog_sizeLayout.setHorizontalGroup(
+            dialog_sizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_sizeLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2)
+                .addGap(31, 31, 31)
+                .addGroup(dialog_sizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_actualizar)
+                    .addComponent(txt_size, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+        dialog_sizeLayout.setVerticalGroup(
+            dialog_sizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_sizeLayout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addGroup(dialog_sizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txt_size, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
+                .addComponent(btn_actualizar)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -120,6 +161,16 @@ public class notepadPlus extends javax.swing.JFrame {
         menu_formato.add(menu_fuente);
 
         menu_tamano.setText("cambiar tamano");
+        menu_tamano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_tamanoMouseClicked(evt);
+            }
+        });
+        menu_tamano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_tamanoActionPerformed(evt);
+            }
+        });
         menu_formato.add(menu_tamano);
 
         menu_estilo.setText("cambiar estilo");
@@ -189,9 +240,8 @@ public class notepadPlus extends javax.swing.JFrame {
     }//GEN-LAST:event_AyudaMouseClicked
 
     private void boton_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nuevoActionPerformed
-       // System.out.println("pepe");
+        // System.out.println("pepe");
         jTextArea1.setText("");
-        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_nuevoActionPerformed
@@ -230,6 +280,46 @@ public class notepadPlus extends javax.swing.JFrame {
     private void menu_colorFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_colorFondoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menu_colorFondoActionPerformed
+
+    private void menu_tamanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_tamanoActionPerformed
+        /* JOptionPane tamano = new JOptionPane();
+        tamano.showInputDialog("ingrese el tamano");
+        int size = Integer.parseInt((String) tamano.getInputValue());
+        Font fuenteVieja = jTextArea1.getFont();
+        Font nuevaFuente = new Font(fuenteVieja.getFontName(), fuenteVieja.getStyle(), size);
+        jTextArea1.setFont(nuevaFuente);*/
+
+ /*    JOptionPane sz = new JOptionPane("ingrese el tamano");
+        sz.show();
+        int tam = Integer.parseInt((String) sz.getInputValue());
+        Font vieja = jTextArea1.getFont();
+        Font nueva = new Font(vieja.getFontName(), vieja.getStyle(), tam);
+        jTextArea1.setFont(nueva);*/
+        dialog_size.setVisible(true);
+        dialog_size.pack();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_tamanoActionPerformed
+
+    private void menu_tamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_tamanoMouseClicked
+        System.out.println("a");
+        JOptionPane sz = new JOptionPane("ingrese el tamano");
+        sz.show();
+        int tam = Integer.parseInt((String) sz.getInputValue());
+        Font vieja = jTextArea1.getFont();
+        Font nueva = new Font(vieja.getFontName(), vieja.getStyle(), tam);
+        jTextArea1.setFont(nueva);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_tamanoMouseClicked
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+
+        int size = Integer.parseInt(txt_size.getText());
+        Font fuenteVieja = txt_size.getFont();
+        Font nuevaFuente = new Font(fuenteVieja.getFontName(), fuenteVieja.getStyle(), size);
+        jTextArea1.setFont(nuevaFuente);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,8 +360,11 @@ public class notepadPlus extends javax.swing.JFrame {
     private javax.swing.JMenu Ayuda;
     private javax.swing.JMenuItem boton_nuevo;
     private javax.swing.JMenuItem boton_salir;
+    private javax.swing.JButton btn_actualizar;
+    private javax.swing.JDialog dialog_size;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -285,5 +378,6 @@ public class notepadPlus extends javax.swing.JFrame {
     private javax.swing.JMenu menu_formato;
     private javax.swing.JMenuItem menu_fuente;
     private javax.swing.JMenuItem menu_tamano;
+    private javax.swing.JTextField txt_size;
     // End of variables declaration//GEN-END:variables
 }
