@@ -4,7 +4,9 @@
  */
 package lab7p2_salvador_macias;
 
+import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,6 +40,9 @@ public class notepadPlus extends javax.swing.JFrame {
         dialog_estilo = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
         jcb_estilo = new javax.swing.JComboBox<>();
+        dialog_colorTxt = new javax.swing.JDialog();
+        btn_colorTxt = new javax.swing.JButton();
+        dialog_ColorFondo = new javax.swing.JDialog();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -137,6 +142,41 @@ public class notepadPlus extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jcb_estilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(170, Short.MAX_VALUE))
+        );
+
+        btn_colorTxt.setText("seleccione el color");
+        btn_colorTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_colorTxtActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialog_colorTxtLayout = new javax.swing.GroupLayout(dialog_colorTxt.getContentPane());
+        dialog_colorTxt.getContentPane().setLayout(dialog_colorTxtLayout);
+        dialog_colorTxtLayout.setHorizontalGroup(
+            dialog_colorTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_colorTxtLayout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(btn_colorTxt)
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
+        dialog_colorTxtLayout.setVerticalGroup(
+            dialog_colorTxtLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialog_colorTxtLayout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addComponent(btn_colorTxt)
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout dialog_ColorFondoLayout = new javax.swing.GroupLayout(dialog_ColorFondo.getContentPane());
+        dialog_ColorFondo.getContentPane().setLayout(dialog_ColorFondoLayout);
+        dialog_ColorFondoLayout.setHorizontalGroup(
+            dialog_ColorFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        dialog_ColorFondoLayout.setVerticalGroup(
+            dialog_ColorFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -310,6 +350,8 @@ public class notepadPlus extends javax.swing.JFrame {
     }//GEN-LAST:event_menu_estiloActionPerformed
 
     private void menu_colorTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_colorTextoActionPerformed
+        dialog_colorTxt.setVisible(true);
+        dialog_colorTxt.pack();
         // TODO add your handling code here:
     }//GEN-LAST:event_menu_colorTextoActionPerformed
 
@@ -359,13 +401,21 @@ public class notepadPlus extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void jcb_estiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcb_estiloActionPerformed
-   ;
+
         int estilo = jcb_estilo.getSelectedIndex();
         Font fuenteVieja = jTextArea1.getFont();
         Font nuevaFuente = new Font(fuenteVieja.getFontName(), estilo, fuenteVieja.getSize());
         jTextArea1.setFont(nuevaFuente);
         dialog_estilo.show(false);
     }//GEN-LAST:event_jcb_estiloActionPerformed
+
+    private void btn_colorTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_colorTxtActionPerformed
+        Color seleccionado = JColorChooser.showDialog(this, "Seleccione un color", Color.WHITE);
+        jTextArea1.setForeground(seleccionado);
+        dialog_colorTxt.setVisible(false);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_colorTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,6 +457,9 @@ public class notepadPlus extends javax.swing.JFrame {
     private javax.swing.JMenuItem boton_nuevo;
     private javax.swing.JMenuItem boton_salir;
     private javax.swing.JButton btn_actualizar;
+    private javax.swing.JButton btn_colorTxt;
+    private javax.swing.JDialog dialog_ColorFondo;
+    private javax.swing.JDialog dialog_colorTxt;
     private javax.swing.JDialog dialog_estilo;
     private javax.swing.JDialog dialog_size;
     private javax.swing.JDialog jDialog1;
