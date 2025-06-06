@@ -38,6 +38,11 @@ public class notepadPlus extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         boton_salir = new javax.swing.JMenuItem();
         menu_formato = new javax.swing.JMenu();
+        menu_fuente = new javax.swing.JMenuItem();
+        menu_tamano = new javax.swing.JMenuItem();
+        menu_estilo = new javax.swing.JMenuItem();
+        menu_colorTexto = new javax.swing.JMenuItem();
+        menu_colorFondo = new javax.swing.JMenuItem();
         Ayuda = new javax.swing.JMenu();
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -105,6 +110,42 @@ public class notepadPlus extends javax.swing.JFrame {
         jMenuBar1.add(menu_archivo);
 
         menu_formato.setText("Formato");
+
+        menu_fuente.setText("cambiar fuente");
+        menu_fuente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_fuenteActionPerformed(evt);
+            }
+        });
+        menu_formato.add(menu_fuente);
+
+        menu_tamano.setText("cambiar tamano");
+        menu_formato.add(menu_tamano);
+
+        menu_estilo.setText("cambiar estilo");
+        menu_estilo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_estiloActionPerformed(evt);
+            }
+        });
+        menu_formato.add(menu_estilo);
+
+        menu_colorTexto.setText("color de texto");
+        menu_colorTexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_colorTextoActionPerformed(evt);
+            }
+        });
+        menu_formato.add(menu_colorTexto);
+
+        menu_colorFondo.setText("color de fondo");
+        menu_colorFondo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_colorFondoActionPerformed(evt);
+            }
+        });
+        menu_formato.add(menu_colorFondo);
+
         jMenuBar1.add(menu_formato);
 
         Ayuda.setText("ayuda");
@@ -148,8 +189,9 @@ public class notepadPlus extends javax.swing.JFrame {
     }//GEN-LAST:event_AyudaMouseClicked
 
     private void boton_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_nuevoActionPerformed
-        System.out.println("pepe");
+       // System.out.println("pepe");
         jTextArea1.setText("");
+        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_nuevoActionPerformed
@@ -163,6 +205,7 @@ public class notepadPlus extends javax.swing.JFrame {
 
     private void boton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_salirActionPerformed
         this.setVisible(false);
+        System.exit(0);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_salirActionPerformed
@@ -171,6 +214,22 @@ public class notepadPlus extends javax.swing.JFrame {
         this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_salirMouseClicked
+
+    private void menu_fuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_fuenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_fuenteActionPerformed
+
+    private void menu_estiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_estiloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_estiloActionPerformed
+
+    private void menu_colorTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_colorTextoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_colorTextoActionPerformed
+
+    private void menu_colorFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_colorFondoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_colorFondoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +279,11 @@ public class notepadPlus extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JMenu menu_archivo;
+    private javax.swing.JMenuItem menu_colorFondo;
+    private javax.swing.JMenuItem menu_colorTexto;
+    private javax.swing.JMenuItem menu_estilo;
     private javax.swing.JMenu menu_formato;
+    private javax.swing.JMenuItem menu_fuente;
+    private javax.swing.JMenuItem menu_tamano;
     // End of variables declaration//GEN-END:variables
 }
